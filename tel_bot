@@ -1,0 +1,14 @@
+Project telegramm bot 0.1
+
+
+This telegram bot will parsing information about relevant posts from the added groups. 
+
+
+The list of groups is added by the community itself and is included in the lists after 50 positive recommendations 
+from resource users or already listed recommendations (all community members can influence adding, 
+excluding, editing). Condition of listing on the resource is a community vote, but can be changed by a majority decision of the community. 
+
+
+
+*python ver    *
+
