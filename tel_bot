@@ -1,14 +1,29 @@
 Project telegramm bot 0.1
 
-
+(
 This telegram bot will parsing information about relevant posts from the added groups. 
 
 
 The list of groups is added by the community itself and is included in the lists after 50 positive recommendations 
 from resource users or already listed recommendations (all community members can influence adding, 
 excluding, editing). Condition of listing on the resource is a community vote, but can be changed by a majority decision of the community. 
+)
+
+
+Visual Studio Code 1.75.1 (Universal)
+* python v3.9.6 macos13.1*
+
+ 
+ import requests # devpage cryptonit.fun/dev
+ 
+req = requests.get('https://r******************') # web3 ENS domain crypton-it.eth
+with open('ru-stackoverflow-questions.html', 'wb') as file: # open file
+    file.write(req.content) # write file
+print('write file succesful')
 
 
 
-*python ver    *
 
+
+
+cryptonit.fun/dev
