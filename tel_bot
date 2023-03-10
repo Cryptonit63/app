@@ -13,28 +13,31 @@ excluding, editing). Condition of listing on the resource is a community vote, b
 Visual Studio Code 1.75.1 (Universal)
 * python v3.9.6 macos13.1*
 
- 
- import requests # devpage
- 
-req = requests.get('https://r******************') # web3 ENS domain crypton-it.eth
-with open('ru-stackoverflow-questions.html', 'wb') as file: # open file
-    file.write(req.content) # write file
-print('write file succesful')
-)
+```python
+import telegram
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import praw
 
+def start(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 
-# Set base image
-FROM python:3.8.2
+def get_posts(update, context):
+    reddit = praw.Reddit(client_id='YOUR_CLIENT_ID', client_secret='YOUR_CLIENT_SECRET', user_agent='YOUR_USER_AGENT')
+    subreddit = reddit.subreddit('YOUR_SUBREDDIT')
+    for submission in subreddit.hot(limit=10):
+        if submission.num_comments > 20:
+            context.bot.send_message(chat_id=update.effective_chat.id, text=submission.title)
 
-# Set work directory
-WORKDIR /app
+def main():
+    updater = Updater(token='YOUR_TOKEN', use_context=True)
+    dispatcher = updater.dispatcher
+    start_handler = CommandHandler('start', start)
+    post_handler = CommandHandler('get_posts', get_posts)
+    dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(post_handler)
+    updater.start_polling()
+    updater.idle()
 
-# Copy the current directory contents into the container at /app 
-ADD . /app
-
-# Install dependencies
-RUN pip install -r requirements.txt
-
-# command to run on container start
-CMD ["python3", "./https://www.cryptonit.fun/dev"]
-
+if __name__ == '__main__':
+    main()
+```
