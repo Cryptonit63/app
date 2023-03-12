@@ -1,7 +1,6 @@
-Project telegramm bot 0.1
-(
+Project telegram bot v0.1
 ((
-This telegram bot will parsing information about relevant posts from the added groups. 
+This telegram bot will parsing Reddit information about relevant posts from the added groups. 
 
 
 The list of groups is added by the community itself and is included in the lists after 50 positive recommendations 
@@ -10,26 +9,25 @@ excluding, editing). Condition of listing on the resource is a community vote, b
 ))
 
 
-Visual Studio Code 1.75.1 (Universal)
+VisualStudioCode v1.75.1 (Universal)
 * python v3.9.6 macos13.1*
 
-```python
 import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import praw
 
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a reddit bot, please no talk to me!")
 
 def get_posts(update, context):
-    reddit = praw.Reddit(client_id='YOUR_CLIENT_ID', client_secret='YOUR_CLIENT_SECRET', user_agent='YOUR_USER_AGENT')
-    subreddit = reddit.subreddit('YOUR_SUBREDDIT')
+    reddit = praw.Reddit(client_id='cryptonit63', client_secret='JKSt08cv1J8GlZTqemKvTJ2njU5ceg', user_agent='n9B33SraBEoiT21XTFKUqg')
+    subreddit = reddit.subreddit('r/AllCrypto')
     for submission in subreddit.hot(limit=10):
         if submission.num_comments > 20:
             context.bot.send_message(chat_id=update.effective_chat.id, text=submission.title)
 
 def main():
-    updater = Updater(token='YOUR_TOKEN', use_context=True)
+    updater = Updater(token='5324647231:AAH8T3itZ-wOOhEHgcbWHHSMTor1Ju0u-9A', use_context=True)
     dispatcher = updater.dispatcher
     start_handler = CommandHandler('start', start)
     post_handler = CommandHandler('get_posts', get_posts)
@@ -40,4 +38,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-```
+
