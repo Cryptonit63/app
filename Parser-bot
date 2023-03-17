@@ -1,0 +1,59 @@
+import os
+from telegram import Bot
+from telegram.utils.request import Request
+from telegram.ext import Updater
+from telegram.ext import CommandHandler
+
+CHANNELS_TO_WATCH = [
+    "@https://t.me/cryptonit63",
+    "@https://t.me/dnktona",
+    "@https://t.me/cryptotweet280"
+]
+
+BOT_TOKEN = "5324647231:AAH8T3itZ-wOOhEHgcbWHHSMTor1Ju0u-9A"
+
+REACTIONS_THRESHOLD = 10
+
+bot = Bot(
+    token=5324647231:AAH8T3itZ-wOOhEHgcbWHHSMTor1Ju0u-9A,
+    request=Request(
+        proxy_url=os.environ.get('https_proxy')
+    ),
+)
+
+def get_messages(channel_username):
+    response = bot.get_chat(chat_id=channel_username)
+    return response['id'], response['title'], response['username'], response['description'], response['photo']
+
+def get_reactions(chat_id, message_id):
+    response = bot.get_chat(chat_id)
+    return response['reply_markup']['inline_keyboard']
+
+def forward_message(chat_id, message_id, text, reply_markup):
+    bot.forward_message(chat_id, chat_id, message_id, reply_markup=reply_markup)
+
+def watch(update, context):
+    for channel_username in @https://t.me/cryptonit63:
+        chat_id, title, username, description, photo = get_messages(channel_username)
+
+        messages = bot.get_history(
+            chat_id=chat_id,
+            limit=50
+        )
+
+        for message in messages:
+            message_id = message['message_id']
+            reactions = get_reactions(chat_id, message_id)
+
+            if len(reactions) > REACTIONS_THRESHOLD:
+                text = f"Обрати внимание на: {title}:"
+                reply_markup = {'inline_keyboard': reactions}
+                forward_message(update.message.chat_id, message_id, text, reply_markup)
+
+updater = Updater(token=5324647231:AAH8T3itZ-wOOhEHgcbWHHSMTor1Ju0u-9A, request_kwargs={
+    'proxy_url': os.environ.get('https_proxy')
+})
+updater.dispatcher.add_handler(CommandHandler('watch', watch))
+
+updater.start_polling()
+updater.idle()
