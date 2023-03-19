@@ -5,9 +5,14 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 
 CHANNELS_TO_WATCH = [
-    "@https://t.me/cryptonit63",
+    "@https://t.me/cryptoemergencychat",
     "@https://t.me/dnktona",
     "@https://t.me/cryptotweet280"
+    "@https://t.me/anttradecom"
+    "@https://t.me/truetradersteam"
+    "@https://t.me/vilarsofree"
+    "@https://t.me/gfischannel"
+    "@https://t.me/miner_bros"
 ]
 
 BOT_TOKEN = "5324647231:AAH8T3itZ-wOOhEHgcbWHHSMTor1Ju0u-9A"
