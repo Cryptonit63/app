@@ -15,12 +15,12 @@ CHANNELS_TO_WATCH = [
     "@https://t.me/miner_bros"
 ]
 
-BOT_TOKEN = "5324647231:AAH8T3itZ-wOOhEHgcbWHHSMTor1Ju0u-9A"
+BOT_TOKEN = "**********:**********-********************-**"
 
 REACTIONS_THRESHOLD = 10
 
 bot = Bot(
-    token=5324647231:AAH8T3itZ-wOOhEHgcbWHHSMTor1Ju0u-9A,
+    token=**********:**********-********************-**,
     request=Request(
         proxy_url=os.environ.get('https_proxy')
     ),
